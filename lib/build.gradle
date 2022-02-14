@@ -6,34 +6,46 @@
  * User Manual available at https://docs.gradle.org/7.4/userguide/building_java_projects.html
  */
 
+
+
 plugins {
     // Apply the java-library plugin for API and implementation separation.
     id 'java-library'
 	id 'idea'
+
 }
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-	jcenter()
 }
 
-ext {
-    cucumber = '7.0.0'
-    selenium = '4.1.2'
-	junit = '7.0.0'
-	testng = '7.4.0'
-}
+
 
 dependencies {
-    
-    testImplementation "org.testng:testng:$testng"
-    testImplementation "io.cucumber:cucumber-junit:$junit"
-	testImplementation "io.cucumber:cucumber-java:$cucumber"
-    testImplementation "io.cucumber:cucumber-testng:$cucumber"
-    testImplementation "org.seleniumhq.selenium:selenium-java:$selenium"
-    testImplementation "org.seleniumhq.selenium:selenium-api:$selenium"
-    
+
+    // https://mvnrepository.com/artifact/junit/junit
+    implementation group: 'junit', name: 'junit', version: '4.12'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java',
+            version: '4.1.2'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.1.2'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.2.3'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.2.3'
+
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
+    // https://mvnrepository.com/artifact/io.github.prashant-ramcharan/courgette-jvm
+    implementation group: 'io.github.prashant-ramcharan', name: 'courgette-jvm', version: '4.6.2'
+
 }
 
 tasks.named('test') {
