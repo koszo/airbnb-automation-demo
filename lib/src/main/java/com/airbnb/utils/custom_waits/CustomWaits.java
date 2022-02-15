@@ -9,8 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.text.DateFormatSymbols;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 
 public class CustomWaits {
 
@@ -24,12 +23,6 @@ public class CustomWaits {
     public static void waitForElementVisible(WebElement element, WebDriver driver, int seconds) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
         wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
-    public static String getDatePlusDays(int offset) {
-        DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate today = LocalDate.now().plusDays(offset);
-        return today.format(FORMATTER);
     }
 
     /**
